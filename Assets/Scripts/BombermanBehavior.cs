@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Boundary
@@ -10,18 +11,32 @@ public class Boundary
 public class BombermanBehavior : MonoBehaviour {
 	string HORIZONTAL = "Horizontal";
 	string VERTICAL = "Vertical";
+	string BOMB = "Jump";
 
 	public float speed;
 	public Boundary boundary;
+	public GameObject bomb;
+	public int bombLimit = 1;
+
+	List<GameObject> bombs;
+
+	void Start() {
+		bombs = new List<GameObject> ();
+	}
 
 	void FixedUpdate ()
 	{
+		Move ();
+		PlaceBomb ();
+	}
+
+	void Move() {
 		float moveHorizontal = Input.GetAxis (HORIZONTAL);
 		float moveVertical = Input.GetAxis (VERTICAL);
-
+		
 		Vector3 vLook = transform.eulerAngles;
 		bool move = false;
-
+		
 		if(moveVertical > 0) {
 			vLook.y = 0.0f;
 			move = true;
@@ -35,16 +50,21 @@ public class BombermanBehavior : MonoBehaviour {
 			vLook.y = 270.0f;
 			move = true;
 		}  
-
+		
 		if(move) {
-			Move(vLook);
+			transform.eulerAngles = vLook;
+			transform.position += transform.forward * speed * Time.deltaTime;
 		} else if(rigidbody.velocity.magnitude > 0) {
 			rigidbody.velocity = Vector3.zero;
 		}
 	}
 
-	void Move(Vector3 vLook) {
-		transform.eulerAngles = vLook;
-		transform.position += transform.forward * speed * Time.deltaTime;
+	void PlaceBomb() {
+		if (Input.GetButton (BOMB)) {
+			if(bombs.Count < bombLimit) {
+				GameObject b = Instantiate(bomb, transform.position, Quaternion.identity) as GameObject;
+				bombs.Add(b);
+			}
+		}
 	}
 }
