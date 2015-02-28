@@ -11,7 +11,7 @@ public class Boundary
 public class BombermanBehavior : MonoBehaviour {
 	string HORIZONTAL = "Horizontal";
 	string VERTICAL = "Vertical";
-	string BOMB = "Jump";
+	string BOMB = "space";
 
 	public float speed;
 	public Boundary boundary;
@@ -60,7 +60,7 @@ public class BombermanBehavior : MonoBehaviour {
 	}
 
 	void PlaceBomb() {
-		if (Input.GetButton (BOMB)) {
+		if (Input.GetKeyUp (BOMB)) {
 			if(bombs.Count < bombLimit) {
 				GameObject b = Instantiate(bomb, transform.position, Quaternion.identity) as GameObject;
 				bombs.Add(b);
