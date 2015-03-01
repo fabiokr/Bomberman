@@ -33,6 +33,7 @@ public class StageGenerator : MonoBehaviour {
 				if(x == offset - 1 && y == offset - 1) {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
+						b.transform.parent = transform.Find("Players");
 						heightOffset = 0.9f;
 						players++;
 					}
@@ -40,12 +41,13 @@ public class StageGenerator : MonoBehaviour {
 					// empty
 				} else if(j == 0 || i == 0 || i == size - 1 || j == size - 1 || (i % 2 == 0 && j % 2 == 0)) {
 					b = Instantiate(block) as GameObject;
+					b.transform.parent = transform.Find("Bricks");
 				} else {
 					b = Instantiate(destructibleBlock) as GameObject;
+					b.transform.parent = transform.Find("Bricks");
 				}
 
 				if(b) {
-					b.transform.parent = transform;
 					b.transform.position = transform.position + new Vector3(i - offset, heightOffset, j - offset);
 				}
 			}

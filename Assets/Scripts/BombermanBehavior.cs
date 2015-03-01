@@ -62,7 +62,9 @@ public class BombermanBehavior : MonoBehaviour {
 	void PlaceBomb() {
 		if (Input.GetKeyUp (BOMB)) {
 			if(bombs.Count < bombLimit) {
-				GameObject b = Instantiate(bomb, transform.position, Quaternion.identity) as GameObject;
+				Vector3 bPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+				GameObject b = Instantiate(bomb, bPosition, Quaternion.identity) as GameObject;
+				b.transform.parent = transform.root.Find("Bombs");
 				bombs.Add(b);
 			}
 		}
