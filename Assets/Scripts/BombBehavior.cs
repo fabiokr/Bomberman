@@ -6,6 +6,8 @@ public class BombBehavior : MonoBehaviour {
 
 	public float countdown = 4;
 
+	public Detonator explosion_prefab;
+
 	void Start() {
 		PositionBombOnGroundCenter ();
 	}
@@ -25,6 +27,7 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private void Explode() {
+		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}
 

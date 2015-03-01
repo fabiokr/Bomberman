@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.67604542, y: .759348392, z: -1.83801222}
+  m_LocalPosition: {x: 7.59502697, y: -2.43942904, z: -2.26369476}
   m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
   m_Children:
   - {fileID: 426012}
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomberman: {fileID: 0}
   countdown: 4
+  explosion_prefab: {fileID: 11459892, guid: 30939d82ee05dea45863fccaec909a22, type: 2}
 --- !u!114 &11495710
 MonoBehaviour:
   m_ObjectHideFlags: 1
