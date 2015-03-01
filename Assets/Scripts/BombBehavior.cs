@@ -4,6 +4,8 @@ using System.Collections;
 public class BombBehavior : MonoBehaviour {
 	public GameObject bomberman;
 
+	public float countdown = 4;
+
 	void Start() {
 		PositionBombOnGroundCenter ();
 	}
@@ -12,6 +14,18 @@ public class BombBehavior : MonoBehaviour {
 		if (other.gameObject == bomberman) {
 			collider.isTrigger = false;
 		}
+	}
+
+	void FixedUpdate() {
+		countdown -= Time.deltaTime;
+
+		if (countdown <= 0) {
+			Explode();
+		}
+	}
+
+	private void Explode() {
+		Destroy (gameObject);
 	}
 
 	private void PositionBombOnGroundCenter() {
