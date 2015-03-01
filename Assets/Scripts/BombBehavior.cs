@@ -7,6 +7,7 @@ public class BombBehavior : MonoBehaviour {
 	public float countdown = 4;
 
 	public Detonator explosion_prefab;
+	//public AudioClip explosion_sound;
 
 	void Start() {
 		PositionBombOnGroundCenter ();
@@ -27,6 +28,7 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private void Explode() {
+		//audio.PlayOneShot(explosion_sound, 0.7F);
 		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}
