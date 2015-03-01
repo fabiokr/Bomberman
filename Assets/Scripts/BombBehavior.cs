@@ -5,6 +5,14 @@ public class BombBehavior : MonoBehaviour {
 	public GameObject bomberman;
 
 	public float countdown = 4;
+	public float power = 1;
+
+	static Vector3[] DIRS = {
+	  Vector3.forward,
+	  Vector3.right,
+      Vector3.back,
+      Vector3.left
+	};
 
 	void Start() {
 		PositionBombOnGroundCenter ();
@@ -25,6 +33,20 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private void Explode() {
+		foreach (Vector3 dir in DIRS) {
+			RaycastHit hit;
+
+			if(Physics.Raycast (transform.position, dir, out hit, power)) {
+				Debug.Log("Hit " + hit.transform.gameObject.name);
+
+				BlockBehavior blockBehavior = hit.transform.GetComponent<BlockBehavior>();
+
+				if(blockBehavior && blockBehavior.destructible) {
+					Destroy (blockBehavior.gameObject);
+				}
+			}
+		}
+
 		Destroy (gameObject);
 	}
 
