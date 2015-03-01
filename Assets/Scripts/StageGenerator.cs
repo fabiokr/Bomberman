@@ -15,18 +15,21 @@ public class StageGenerator : MonoBehaviour {
 			size++;
 		}
 
-		GameObject g = Instantiate (ground) as GameObject;
-		g.transform.localScale = new Vector3(size, size, 1);
-		g.transform.parent = transform;
-		g.transform.position = transform.position;
-
 		float offset = (size / 2f) - 0.5f;
 
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < size; j++) {
+				Vector3 localPosition = transform.position + new Vector3(i - offset, 0, j - offset);
+
+				// Ground
+				GameObject g = Instantiate (ground) as GameObject;
+				g.transform.localScale = new Vector3(1, 1, 1);
+				g.transform.parent = transform.root.Find ("Grounds");
+				g.transform.position = localPosition;
+
+				// Blocks
 				int x = Mathf.Abs(j - (int)offset);
 				int y = Mathf.Abs(i - (int)offset);
-				float heightOffset = 0.5f;
 
 				GameObject b = null;
 
@@ -34,7 +37,7 @@ public class StageGenerator : MonoBehaviour {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
 						b.transform.parent = transform.Find("Players");
-						heightOffset = 0.9f;
+						b.transform.position = new Vector3(localPosition.x, 0.9f, localPosition.z);
 						players++;
 					}
 				} else if((x == offset - 1 && y == offset - 1) || (x == offset - 2 && y == offset - 1) || (x == offset - 1 && y == offset - 2)) {
@@ -42,13 +45,11 @@ public class StageGenerator : MonoBehaviour {
 				} else if(j == 0 || i == 0 || i == size - 1 || j == size - 1 || (i % 2 == 0 && j % 2 == 0)) {
 					b = Instantiate(block) as GameObject;
 					b.transform.parent = transform.Find("Bricks");
+					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				} else {
 					b = Instantiate(destructibleBlock) as GameObject;
 					b.transform.parent = transform.Find("Bricks");
-				}
-
-				if(b) {
-					b.transform.position = transform.position + new Vector3(i - offset, heightOffset, j - offset);
+					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				}
 			}
 		}
