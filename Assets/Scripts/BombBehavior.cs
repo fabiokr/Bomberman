@@ -7,6 +7,8 @@ public class BombBehavior : MonoBehaviour {
 	public float countdown = 4;
 	public float power = 1;
 
+	public Detonator explosion_prefab;
+
 	static Vector3[] DIRS = {
 	  Vector3.forward,
 	  Vector3.right,
@@ -33,6 +35,9 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private void Explode() {
+		// Explosion effect
+		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
+
 		foreach (Vector3 dir in DIRS) {
 			RaycastHit hit;
 
