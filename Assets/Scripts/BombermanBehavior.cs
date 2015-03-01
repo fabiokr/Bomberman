@@ -64,6 +64,7 @@ public class BombermanBehavior : MonoBehaviour {
 			if(bombs.Count < bombLimit) {
 				Vector3 bPosition = new Vector3(transform.position.x, 0f, transform.position.z);
 				GameObject b = Instantiate(bomb, bPosition, Quaternion.identity) as GameObject;
+				b.GetComponent<BombBehavior>().bomberman = gameObject;
 				b.transform.parent = transform.root.Find("Bombs");
 				bombs.Add(b);
 			}
