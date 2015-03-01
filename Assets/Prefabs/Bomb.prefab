@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466014}
-  - 136: {fileID: 13609830}
   - 114: {fileID: 11414420}
+  - 65: {fileID: 6517756}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -343,6 +343,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174758}
   m_Mesh: {fileID: 4300000, guid: c64f2d1f11f347f4789d8d751fe7a07a, type: 3}
+--- !u!65 &6517756
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 5, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9574750
 Animator:
   serializedVersion: 3
@@ -370,19 +382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomberman: {fileID: 0}
---- !u!136 &13609830
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: .889999986
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.16999996, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
