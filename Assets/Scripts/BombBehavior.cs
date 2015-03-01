@@ -39,10 +39,10 @@ public class BombBehavior : MonoBehaviour {
 			if(Physics.Raycast (transform.position, dir, out hit, power)) {
 				Debug.Log("Hit " + hit.transform.gameObject.name);
 
-				BlockBehavior blockBehavior = hit.transform.GetComponent<BlockBehavior>();
+				ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior>();
 
-				if(blockBehavior && blockBehavior.destructible) {
-					Destroy (blockBehavior.gameObject);
+				if(explodableBehavior) {
+					explodableBehavior.Explode();
 				}
 			}
 		}
