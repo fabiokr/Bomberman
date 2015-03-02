@@ -60,7 +60,7 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private Transform GetClosestGround() {
-		Transform[] grounds = transform.root.Find ("Grounds").transform.GetComponentsInChildren<Transform>();
+		Transform[] grounds = transform.root.Find (Stage.Grounds).transform.GetComponentsInChildren<Transform>();
 
 		Transform closest = null;
 		float closestMagnitude = Mathf.Infinity;

@@ -9,10 +9,6 @@ public class Boundary
 }
 
 public class BombermanBehavior : MonoBehaviour {
-	string HORIZONTAL = "Horizontal";
-	string VERTICAL = "Vertical";
-	string BOMB = "space";
-
 	public float speed;
 	public Boundary boundary;
 	public GameObject bomb;
@@ -31,8 +27,8 @@ public class BombermanBehavior : MonoBehaviour {
 	}
 
 	void Move() {
-		float moveHorizontal = Input.GetAxis (HORIZONTAL);
-		float moveVertical = Input.GetAxis (VERTICAL);
+		float moveHorizontal = Input.GetAxis (Controls.Horizontal);
+		float moveVertical = Input.GetAxis (Controls.Vertical);
 		
 		Vector3 vLook = transform.eulerAngles;
 		bool move = false;
@@ -60,12 +56,12 @@ public class BombermanBehavior : MonoBehaviour {
 	}
 
 	void PlaceBomb() {
-		if (Input.GetKeyUp (BOMB)) {
+		if (Input.GetKeyUp (Controls.Bomb)) {
 			if(bombs.Count < bombLimit) {
 				Vector3 bPosition = new Vector3(transform.position.x, 0f, transform.position.z);
 				GameObject b = Instantiate(bomb, bPosition, Quaternion.identity) as GameObject;
 				b.GetComponent<BombBehavior>().bomberman = gameObject;
-				b.transform.parent = transform.root.Find("Bombs");
+				b.transform.parent = transform.root.Find(Stage.Bombs);
 				bombs.Add(b);
 			}
 		}

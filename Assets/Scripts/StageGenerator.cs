@@ -24,7 +24,7 @@ public class StageGenerator : MonoBehaviour {
 				// Ground
 				GameObject g = Instantiate (ground) as GameObject;
 				g.transform.localScale = new Vector3(1, 1, 1);
-				g.transform.parent = transform.root.Find ("Grounds");
+				g.transform.parent = transform.root.Find (Stage.Grounds);
 				g.transform.position = localPosition;
 
 				// Blocks
@@ -36,7 +36,7 @@ public class StageGenerator : MonoBehaviour {
 				if(x == offset - 1 && y == offset - 1) {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
-						b.transform.parent = transform.Find("Players");
+						b.transform.parent = transform.Find(Stage.Players);
 						b.transform.position = new Vector3(localPosition.x, 0.9f, localPosition.z);
 						players++;
 					}
@@ -44,11 +44,11 @@ public class StageGenerator : MonoBehaviour {
 					// empty
 				} else if(j == 0 || i == 0 || i == size - 1 || j == size - 1 || (i % 2 == 0 && j % 2 == 0)) {
 					b = Instantiate(block) as GameObject;
-					b.transform.parent = transform.Find("Bricks");
+					b.transform.parent = transform.Find(Stage.Bricks);
 					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				} else {
 					b = Instantiate(destructibleBlock) as GameObject;
-					b.transform.parent = transform.Find("Bricks");
+					b.transform.parent = transform.Find(Stage.Bricks);
 					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				}
 			}
