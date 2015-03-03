@@ -17,10 +17,6 @@ public class BombBehavior : MonoBehaviour {
       Vector3.left
 	};
 
-	void Start() {
-		PositionBombOnGroundCenter ();
-	}
-
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject == bomberman) {
 			collider.isTrigger = false;
@@ -56,27 +52,5 @@ public class BombBehavior : MonoBehaviour {
 		BombermanBehavior b = bomberman.GetComponent<BombermanBehavior> ();
 		b.RemoveBomb (gameObject);
 		Destroy (gameObject);
-	}
-
-	private void PositionBombOnGroundCenter() {
-		transform.position = GetClosestGround().position;
-	}
-
-	private Transform GetClosestGround() {
-		Transform[] grounds = transform.root.Find ("Grounds").transform.GetComponentsInChildren<Transform>();
-
-		Transform closest = null;
-		float closestMagnitude = Mathf.Infinity;
-
-		foreach (Transform t in grounds) {
-			float m = (t.position - transform.position).sqrMagnitude;
-
-			if(m < closestMagnitude) {
-				closest = t;
-				closestMagnitude = m;
-			}
-		}
-
-		return closest;
 	}
 }

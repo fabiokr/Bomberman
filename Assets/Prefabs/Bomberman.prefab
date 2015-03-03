@@ -170,7 +170,7 @@ GameObject:
   - 136: {fileID: 13673702}
   m_Layer: 0
   m_Name: Bomberman
-  m_TagString: Untagged
+  m_TagString: Bomberman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ MonoBehaviour:
     zMin: 0
     zMax: 0
   bomb: {fileID: 166014, guid: 2aed96f9097e18a43b89525026ec7ddb, type: 2}
-  bombLimit: 3
+  bombLimit: 1000000
 --- !u!136 &13673702
 CapsuleCollider:
   m_ObjectHideFlags: 1
