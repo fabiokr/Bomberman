@@ -79,7 +79,7 @@ GameObject:
   - 114: {fileID: 11495710}
   m_Layer: 0
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomberman: {fileID: 0}
   countdown: 4
+  power: 1
   explosion_prefab: {fileID: 11459892, guid: 30939d82ee05dea45863fccaec909a22, type: 2}
 --- !u!114 &11495710
 MonoBehaviour:

@@ -57,13 +57,34 @@ public class BombermanBehavior : MonoBehaviour {
 
 	void PlaceBomb() {
 		if (Input.GetKeyUp (Controls.Bomb)) {
-			if(bombs.Count < bombLimit) {
-				Vector3 bPosition = new Vector3(transform.position.x, 0f, transform.position.z);
-				GameObject b = Instantiate(bomb, bPosition, Quaternion.identity) as GameObject;
+			if(bombs.Count < bombLimit && !HasBomb()) {
+				GameObject b = Instantiate(bomb, GetGround().transform.position, Quaternion.identity) as GameObject;
 				b.GetComponent<BombBehavior>().bomberman = gameObject;
 				b.transform.parent = transform.root.Find(Stage.Bombs);
 				bombs.Add(b);
 			}
 		}
+	}
+
+	private bool HasBomb() {
+		return GetGround().GetComponent<GroundBehavior>().HasBomb();
+	}
+
+	private GameObject GetGround() {
+		GameObject[] grounds = GameObject.FindGameObjectsWithTag(Tags.Ground);
+		
+		GameObject closest = null;
+		float closestMagnitude = Mathf.Infinity;
+		
+		foreach (GameObject g in grounds) {
+			float m = (g.transform.position - transform.position).sqrMagnitude;
+			
+			if(m < closestMagnitude) {
+				closest = g;
+				closestMagnitude = m;
+			}
+		}
+		
+		return closest;
 	}
 }
