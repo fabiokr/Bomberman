@@ -14,7 +14,7 @@ GameObject:
   - 65: {fileID: 6518832}
   - 64: {fileID: 6425880}
   - 64: {fileID: 6452214}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
