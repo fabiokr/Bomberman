@@ -13,6 +13,7 @@ public class BombermanBehavior : MonoBehaviour {
 	public Boundary boundary;
 	public GameObject bomb;
 	public int bombLimit = 1;
+	public int bombPower = 1;
 
 	List<GameObject> bombs;
 
@@ -59,9 +60,12 @@ public class BombermanBehavior : MonoBehaviour {
 		if (Input.GetKeyUp (Controls.Bomb)) {
 			if(bombs.Count < bombLimit && !HasBomb()) {
 				GameObject b = Instantiate(bomb, GetGround().transform.position, Quaternion.identity) as GameObject;
-				b.GetComponent<BombBehavior>().bomberman = gameObject;
 				b.transform.parent = transform.root.Find(Stage.Bombs);
 				bombs.Add(b);
+
+				BombBehavior bBehavior = b.GetComponent<BombBehavior>();
+				bBehavior.bomberman = gameObject;
+				bBehavior.power = bombPower;
 			}
 		}
 	}

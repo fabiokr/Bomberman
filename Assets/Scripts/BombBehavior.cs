@@ -35,16 +35,20 @@ public class BombBehavior : MonoBehaviour {
 		// Explosion effect
 		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
 
-		foreach (Vector3 dir in DIRS) {
-			RaycastHit hit;
+		for (int i = 1; i <= power; i++) {
+			foreach (Vector3 dir in DIRS) {
+				RaycastHit hit;
 
-			if(Physics.Raycast (transform.position, dir, out hit, power)) {
-				Debug.Log("Hit " + hit.transform.gameObject.name);
+				Debug.Log ("Raycast to " + dir.ToString() + " with power " + i);
 
-				ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior>();
+				if (Physics.Raycast (transform.position, dir, out hit, i)) {
+					Debug.Log ("Hit " + hit.transform.gameObject.tag);
 
-				if(explodableBehavior) {
-					explodableBehavior.Explode();
+					ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior> ();
+
+					if (explodableBehavior) {
+						explodableBehavior.Explode ();
+					}
 				}
 			}
 		}
