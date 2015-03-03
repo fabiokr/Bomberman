@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BombBehavior : MonoBehaviour {
 	public GameObject bomberman;
@@ -52,6 +53,8 @@ public class BombBehavior : MonoBehaviour {
 			}
 		}
 
+		BombermanBehavior b = bomberman.GetComponent<BombermanBehavior> ();
+		b.RemoveBomb (gameObject);
 		Destroy (gameObject);
 	}
 

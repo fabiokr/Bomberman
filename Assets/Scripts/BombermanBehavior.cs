@@ -70,4 +70,8 @@ public class BombermanBehavior : MonoBehaviour {
 			}
 		}
 	}
+
+	public void RemoveBomb(GameObject b) {
+		bombs.Remove (b);
+	}
 }
