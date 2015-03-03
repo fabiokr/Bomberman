@@ -66,12 +66,8 @@ public class BombermanBehavior : MonoBehaviour {
 		}
 	}
 
-	private bool HasBomb() {
-		return GetGround().GetComponent<GroundBehavior>().HasBomb();
-	}
-
 	private GameObject GetGround() {
-		GameObject[] grounds = GameObject.FindGameObjectsWithTag(Tags.Ground);
+		GameObject[] grounds = GameObject.FindGameObjectsWithTag (Tags.Ground);
 		
 		GameObject closest = null;
 		float closestMagnitude = Mathf.Infinity;
@@ -79,12 +75,20 @@ public class BombermanBehavior : MonoBehaviour {
 		foreach (GameObject g in grounds) {
 			float m = (g.transform.position - transform.position).sqrMagnitude;
 			
-			if(m < closestMagnitude) {
+			if (m < closestMagnitude) {
 				closest = g;
 				closestMagnitude = m;
 			}
 		}
 		
 		return closest;
+	}
+
+	private bool HasBomb() {
+		return GetGround().GetComponent<GroundBehavior>().HasBomb();
+	}
+
+	public void RemoveBomb(GameObject b) {
+		bombs.Remove (b);
 	}
 }
