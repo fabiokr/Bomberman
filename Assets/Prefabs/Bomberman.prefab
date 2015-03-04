@@ -450,7 +450,8 @@ MonoBehaviour:
     zMin: 0
     zMax: 0
   bomb: {fileID: 166014, guid: 2aed96f9097e18a43b89525026ec7ddb, type: 2}
-  bombLimit: 1000000
+  bombLimit: 1
+  bombPower: 1
 --- !u!136 &13673702
 CapsuleCollider:
   m_ObjectHideFlags: 1
