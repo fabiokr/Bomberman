@@ -7,4 +7,5 @@ public static class Tags {
 	public const string Block = "Block";
 	public const string DestructibleBlock = "DestructibleBlock";
 	public const string Ground = "Ground";
+	public const string Stage = "Stage";
 }
