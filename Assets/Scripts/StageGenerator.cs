@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StageGenerator : MonoBehaviour {
 
-	public GameObject ground, block, destructibleBlock, player;
+	public GameObject ground, block, destructibleBlock, player, itemBomb;
 	public int size = 15;
 	public int nPlayers = 1;
 
@@ -49,6 +49,10 @@ public class StageGenerator : MonoBehaviour {
 				} else {
 					b = Instantiate(destructibleBlock) as GameObject;
 					b.transform.parent = transform.Find(Stage.Bricks);
+					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
+
+					b = Instantiate(itemBomb) as GameObject;
+					b.transform.parent = transform.Find(Stage.Items);
 					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				}
 			}

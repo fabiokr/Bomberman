@@ -129,6 +129,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1723532100}
   m_RootOrder: 1
+--- !u!1 &671231672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 671231673}
+  m_Layer: 0
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &671231673
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671231672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1723532100}
+  m_RootOrder: 4
 --- !u!1 &711536209
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +361,7 @@ MonoBehaviour:
   block: {fileID: 143962, guid: 0a36d9494058f4a4cb923f84e711fa40, type: 2}
   destructibleBlock: {fileID: 135812, guid: db76e6b5e16a9d74ab1c6350dff431e6, type: 2}
   player: {fileID: 195726, guid: 92a199bcc3fc3ec4da05150a2f81abfc, type: 2}
+  itemBomb: {fileID: 191738, guid: 50de2c84ac885924489c2d9324e41e26, type: 2}
   size: 15
   nPlayers: 1
 --- !u!4 &1723532100
@@ -350,6 +378,7 @@ Transform:
   - {fileID: 240712993}
   - {fileID: 203349300}
   - {fileID: 1860757730}
+  - {fileID: 671231673}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &1860757729
