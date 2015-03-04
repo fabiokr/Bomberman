@@ -15,10 +15,13 @@ public class BombermanBehavior : MonoBehaviour {
 	public int bombLimit = 1;
 	public int bombPower = 1;
 
+	StageGenerator stageGenerator;
+
 	List<GameObject> bombs;
 
 	void Start() {
 		bombs = new List<GameObject> ();
+		stageGenerator = GameObject.FindGameObjectWithTag(Tags.Stage).GetComponent<StageGenerator>();
 	}
 
 	void FixedUpdate ()
@@ -67,6 +70,18 @@ public class BombermanBehavior : MonoBehaviour {
 				bBehavior.bomberman = gameObject;
 				bBehavior.power = bombPower;
 			}
+		}
+	}
+
+	void AddBombLimit() {
+		if (bombLimit + 1 <= stageGenerator.size) {
+			bombLimit += 1;
+		}
+	}
+
+	void AddBombPower() {
+		if (bombPower + 1 <= stageGenerator.size) {
+			bombPower += 1;
 		}
 	}
 
