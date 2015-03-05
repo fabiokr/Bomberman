@@ -10,6 +10,8 @@ public class BombBehavior : MonoBehaviour {
 
 	public Detonator explosion_prefab;
 
+	private bool exploded = false;
+
 	static Vector3[] DIRS = {
 	  Vector3.forward,
 	  Vector3.right,
@@ -32,6 +34,14 @@ public class BombBehavior : MonoBehaviour {
 	}
 
 	private void Explode() {
+
+		// To avoid recursion
+		if (exploded) {
+			return;
+		}
+
+		exploded = true;
+
 		// Explosion effect
 		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
 
@@ -45,9 +55,13 @@ public class BombBehavior : MonoBehaviour {
 					Debug.Log ("Hit " + hit.transform.gameObject.tag);
 
 					ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior> ();
+					BombBehavior bombBehavior = hit.transform.GetComponent<BombBehavior> ();
 
 					if (explodableBehavior) {
 						explodableBehavior.Explode ();
+					}
+					else if (bombBehavior) {
+						bombBehavior.Explode ();
 					}
 				}
 			}
