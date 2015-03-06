@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StageGenerator : MonoBehaviour {
 
-	public GameObject ground, block, destructibleBlock, player, itemBomb;
+	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
 	public int nPlayers = 1;
+	public float itemFrequency = 0.1f;
+
+	public List<GameObject> items;
 
 	int players = 0;
 
@@ -51,11 +55,21 @@ public class StageGenerator : MonoBehaviour {
 					b.transform.parent = transform.Find(Stage.Bricks);
 					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 
-					b = Instantiate(itemBomb) as GameObject;
-					b.transform.parent = transform.Find(Stage.Items);
-					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
+					InstantiateItem(localPosition);
 				}
 			}
 		}
+	}
+
+	private void InstantiateItem(Vector3 position) {
+		if (items.Count > 0 && Random.value <= itemFrequency) {
+			GameObject item = Instantiate (RandomItem ()) as GameObject;
+			item.transform.parent = transform.Find (Stage.Items);
+			item.transform.position = new Vector3 (position.x, 0.5f, position.z);
+		}
+	}
+
+	private GameObject RandomItem() {
+		return items[(int)Random.Range(0, items.Count)];
 	}
 }

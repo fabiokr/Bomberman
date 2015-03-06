@@ -41,6 +41,8 @@ public class BombBehavior : MonoBehaviour {
 
 				Debug.Log ("Raycast to " + dir.ToString() + " with power " + i);
 
+				Debug.r
+
 				if (Physics.Raycast (transform.position, dir, out hit, i)) {
 					Debug.Log ("Hit " + hit.transform.gameObject.tag);
 
