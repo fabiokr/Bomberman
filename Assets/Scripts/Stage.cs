@@ -6,4 +6,5 @@ public static class Stage {
 	public const string Bombs = "Bombs";
 	public const string Players = "Players";
 	public const string Bricks = "Bricks";
+	public const string Items = "Items";
 }

@@ -73,13 +73,13 @@ public class BombermanBehavior : MonoBehaviour {
 		}
 	}
 
-	void AddBombLimit() {
+	public void AddBombLimit() {
 		if (bombLimit + 1 <= stageGenerator.size) {
 			bombLimit += 1;
 		}
 	}
 
-	void AddBombPower() {
+	public void AddBombPower() {
 		if (bombPower + 1 <= stageGenerator.size) {
 			bombPower += 1;
 		}
