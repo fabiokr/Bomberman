@@ -8,11 +8,11 @@ public class Boundary
 	public float xMin, xMax, zMin, zMax;
 }
 
-public class BombermanBehavior : MonoBehaviour {
+public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public float speed = 2f, maxSpeed = 5f;
 	public Boundary boundary;
 	public GameObject bomb;
-	public int bombLimit = 1, bombPower = 1;
+	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
 
 	StageGenerator stageGenerator;
 
@@ -88,6 +88,36 @@ public class BombermanBehavior : MonoBehaviour {
 		if (speed + 0.5f <= maxSpeed) {
 			speed += 0.5f;
 		}
+	}
+
+	public void AddHp() {
+		if (hp + 1 <= maxHp) {
+			hp += 1;
+		}
+	}
+
+	public void Hit() {
+		hp -= 1;
+
+		if (hp <= 0) {
+			Die ();
+		}
+	}
+
+	public void Die() {
+		Destroy (gameObject);
+	}
+
+	public void Explode() {
+		// To avoid recursion
+		gameObject.layer = Layers.IgnoreRaycast;
+
+		Hit ();
+	}
+
+	public void LateUpdate() {
+		// Restore to default layer
+		gameObject.layer = Layers.Default;
 	}
 
 	private GameObject GetGround() {
