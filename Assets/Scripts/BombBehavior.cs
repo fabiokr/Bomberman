@@ -49,13 +49,7 @@ public class BombBehavior : MonoBehaviour {
 			foreach (Vector3 dir in DIRS) {
 				RaycastHit hit;
 
-				Debug.Log ("Raycast to " + dir.ToString() + " with power " + i);
-
-				Debug.r
-
 				if (Physics.Raycast (transform.position, dir, out hit, i)) {
-					Debug.Log ("Hit " + hit.transform.gameObject.tag);
-
 					ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior> ();
 					BombBehavior bombBehavior = hit.transform.GetComponent<BombBehavior> ();
 
