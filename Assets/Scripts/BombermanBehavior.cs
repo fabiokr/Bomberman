@@ -9,11 +9,10 @@ public class Boundary
 }
 
 public class BombermanBehavior : MonoBehaviour {
-	public float speed;
+	public float speed = 2f, maxSpeed = 5f;
 	public Boundary boundary;
 	public GameObject bomb;
-	public int bombLimit = 1;
-	public int bombPower = 1;
+	public int bombLimit = 1, bombPower = 1;
 
 	StageGenerator stageGenerator;
 
@@ -82,6 +81,12 @@ public class BombermanBehavior : MonoBehaviour {
 	public void AddBombPower() {
 		if (bombPower + 1 <= stageGenerator.size) {
 			bombPower += 1;
+		}
+	}
+
+	public void AddSpeed() {
+		if (speed + 0.5f <= maxSpeed) {
+			speed += 0.5f;
 		}
 	}
 

@@ -443,7 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ded8617572af3498cbea46141bcce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 2
+  maxSpeed: 5
   boundary:
     xMin: 0
     xMax: 0
