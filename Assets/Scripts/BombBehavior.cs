@@ -42,8 +42,6 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 			foreach (Vector3 dir in DIRS) {
 				RaycastHit hit;
 
-				// MAKE THE RAYCASTER A LITTLE HIGHTER
-
 				if (Physics.Raycast (transform.position, dir, out hit, i)) {
 					ExplodableInterface explodable = (ExplodableInterface)hit.transform.GetComponent (typeof(ExplodableInterface));
 

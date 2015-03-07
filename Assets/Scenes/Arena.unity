@@ -363,11 +363,12 @@ MonoBehaviour:
   player: {fileID: 195726, guid: 92a199bcc3fc3ec4da05150a2f81abfc, type: 2}
   size: 15
   nPlayers: 1
-  itemFrequency: .300000012
+  itemFrequency: 1
   items:
   - {fileID: 191738, guid: 50de2c84ac885924489c2d9324e41e26, type: 2}
   - {fileID: 182100, guid: add0ef152635dd04aa765433dade752e, type: 2}
   - {fileID: 195302, guid: 643cbc630553aa24cb0aaa5fd274663c, type: 2}
+  - {fileID: 100016, guid: 4f8fd0a797019a84cbb9d0154de5cdde, type: 2}
 --- !u!4 &1723532100
 Transform:
   m_ObjectHideFlags: 0
