@@ -7,7 +7,7 @@ public class StageGenerator : MonoBehaviour {
 	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
 	public int nPlayers = 1;
-	public float itemFrequency = 0.1f;
+	public float itemFrequency = 0.1f, emptyBlocksFrequency = 0.1f;
 
 	public List<GameObject> items;
 
@@ -51,11 +51,13 @@ public class StageGenerator : MonoBehaviour {
 					b.transform.parent = transform.Find(Stage.Bricks);
 					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 				} else {
-					b = Instantiate(destructibleBlock) as GameObject;
-					b.transform.parent = transform.Find(Stage.Bricks);
-					b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
+					if(Random.value >= emptyBlocksFrequency) {
+						b = Instantiate(destructibleBlock) as GameObject;
+						b.transform.parent = transform.Find(Stage.Bricks);
+						b.transform.position = new Vector3(localPosition.x, 0.5f, localPosition.z);
 
-					InstantiateItem(localPosition);
+						InstantiateItem(localPosition);
+					}
 				}
 			}
 		}
