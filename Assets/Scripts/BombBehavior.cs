@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class BombBehavior : MonoBehaviour, ExplodableInterface {
 	public GameObject bomberman;
 
-	public float countdown = 4;
-	public float power = 1;
+	public float timer = 4.5f;
+	public float power = 1f;
 
 	public Detonator explosion_prefab;
 
@@ -24,9 +24,9 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	void FixedUpdate() {
-		countdown -= Time.deltaTime;
+		timer -= Time.deltaTime;
 
-		if (countdown <= 0) {
+		if (timer <= 0) {
 			Explode();
 		}
 	}
