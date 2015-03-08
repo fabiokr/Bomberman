@@ -2,15 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BombBehavior : MonoBehaviour {
+public class BombBehavior : MonoBehaviour, ExplodableInterface {
 	public GameObject bomberman;
 
 	public float countdown = 4;
 	public float power = 1;
 
 	public Detonator explosion_prefab;
-
-	private bool exploded = false;
 
 	static Vector3[] DIRS = {
 	  Vector3.forward,
@@ -33,14 +31,9 @@ public class BombBehavior : MonoBehaviour {
 		}
 	}
 
-	private void Explode() {
-
+	public void Explode() {
 		// To avoid recursion
-		if (exploded) {
-			return;
-		}
-
-		exploded = true;
+		gameObject.layer = Layers.IgnoreRaycast;
 
 		// Explosion effect
 		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
@@ -50,14 +43,11 @@ public class BombBehavior : MonoBehaviour {
 				RaycastHit hit;
 
 				if (Physics.Raycast (transform.position, dir, out hit, i)) {
-					ExplodableBehavior explodableBehavior = hit.transform.GetComponent<ExplodableBehavior> ();
-					BombBehavior bombBehavior = hit.transform.GetComponent<BombBehavior> ();
+					ExplodableInterface explodable = (ExplodableInterface)hit.transform.GetComponent (typeof(ExplodableInterface));
 
-					if (explodableBehavior) {
-						explodableBehavior.Explode ();
-					}
-					else if (bombBehavior) {
-						bombBehavior.Explode ();
+					if (explodable != null) {
+						Debug.Log("Explodable:" + explodable);
+						explodable.Explode ();
 					}
 				}
 			}
