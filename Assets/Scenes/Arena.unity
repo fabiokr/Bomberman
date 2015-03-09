@@ -370,6 +370,7 @@ MonoBehaviour:
   - {fileID: 182100, guid: add0ef152635dd04aa765433dade752e, type: 2}
   - {fileID: 195302, guid: 643cbc630553aa24cb0aaa5fd274663c, type: 2}
   - {fileID: 100016, guid: 4f8fd0a797019a84cbb9d0154de5cdde, type: 2}
+  - {fileID: 122130, guid: 3f9fb3b79cce4d54c896b026c750b5a1, type: 2}
 --- !u!4 &1723532100
 Transform:
   m_ObjectHideFlags: 0

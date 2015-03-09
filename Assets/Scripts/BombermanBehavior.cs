@@ -9,9 +9,9 @@ public class Boundary
 }
 
 public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
-	public float speed = 2f, maxSpeed = 5f;
 	public Boundary boundary;
 	public GameObject bomb;
+	public float speed = 2f, maxSpeed = 5f, bombSpeed = 4.5f, minBombSpeed = 3f;
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
 
 	StageGenerator stageGenerator;
@@ -68,6 +68,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 				BombBehavior bBehavior = b.GetComponent<BombBehavior>();
 				bBehavior.bomberman = gameObject;
 				bBehavior.power = bombPower;
+				bBehavior.timer = bombSpeed;
 			}
 		}
 	}
@@ -93,6 +94,12 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public void AddHp() {
 		if (hp + 1 <= maxHp) {
 			hp += 1;
+		}
+	}
+
+	public void DecreaseBombSpeed() {
+		if (bombSpeed - 1 >= minBombSpeed) {
+			bombSpeed -= 1;
 		}
 	}
 
