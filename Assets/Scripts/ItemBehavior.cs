@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemBehavior : MonoBehaviour {
+public class ItemBehavior : MonoBehaviour, ExplodableInterface {
 	bool activated = false;
+
+	public void Explode() {
+		// To avoid recursion
+		gameObject.layer = Layers.IgnoreRaycast;
+
+		Destroy (gameObject);
+	}
 
 	protected BombermanBehavior GetBombermanBehavior(Collider other) {
 		BombermanBehavior b = other.gameObject.GetComponent<BombermanBehavior> ();
