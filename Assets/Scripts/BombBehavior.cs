@@ -9,6 +9,7 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 	public float power = 1;
 
 	public Detonator explosion_prefab;
+	public GameObject explosion_fire_prefab;
 
 	static Vector3[] DIRS = {
 	  Vector3.forward,
@@ -49,6 +50,11 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 						Debug.Log("Explodable:" + explodable);
 						explodable.Explode ();
 					}
+				}
+				else {
+					// Explosion fire effect
+					GameObject fire = Instantiate (explosion_fire_prefab, transform.position + (dir * i), Quaternion.identity) as GameObject;
+					Destroy (fire, 3.0f); // Auto destroy after 3 seconds
 				}
 			}
 		}

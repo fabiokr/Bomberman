@@ -504,6 +504,8 @@ MonoBehaviour:
   countdown: 4
   power: 1
   explosion_prefab: {fileID: 11459892, guid: 30939d82ee05dea45863fccaec909a22, type: 2}
+  explosion_fire_prefab: {fileID: 189694, guid: 4be3ed5ca5e3c77459c7272e5de9d000,
+    type: 2}
 --- !u!114 &11495710
 MonoBehaviour:
   m_ObjectHideFlags: 1
