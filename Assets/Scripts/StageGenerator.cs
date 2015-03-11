@@ -63,6 +63,14 @@ public class StageGenerator : MonoBehaviour {
 		}
 	}
 
+	void OnDrawGizmosSelected() {
+		Gizmos.color = Color.blue;
+		Gizmos.DrawLine(new Vector3(transform.position.x - HalfSize(), transform.position.y, transform.position.z + HalfSize()), new Vector3(transform.position.x + HalfSize(), transform.position.y, transform.position.z + HalfSize()));
+		Gizmos.DrawLine(new Vector3(transform.position.x - HalfSize(), transform.position.y, transform.position.z - HalfSize()), new Vector3(transform.position.x + HalfSize(), transform.position.y, transform.position.z - HalfSize()));
+		Gizmos.DrawLine(new Vector3(transform.position.x - HalfSize(), transform.position.y, transform.position.z - HalfSize()), new Vector3(transform.position.x - HalfSize(), transform.position.y, transform.position.z + HalfSize()));
+		Gizmos.DrawLine(new Vector3(transform.position.x + HalfSize(), transform.position.y, transform.position.z + HalfSize()), new Vector3(transform.position.x + HalfSize(), transform.position.y, transform.position.z - HalfSize()));
+	}
+	
 	private void InstantiateItem(Vector3 position) {
 		if (items.Count > 0 && Random.value <= itemFrequency) {
 			GameObject item = Instantiate (RandomItem ()) as GameObject;
@@ -73,5 +81,9 @@ public class StageGenerator : MonoBehaviour {
 
 	private GameObject RandomItem() {
 		return items[(int)Random.Range(0, items.Count)];
+	}
+
+	private float HalfSize() {
+		return size / 2f;
 	}
 }
