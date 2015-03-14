@@ -6,7 +6,7 @@ public class TimerBehavior : MonoBehaviour {
 	public float timer = 180;
 
 	Text text;
-	bool active = true;
+	bool finished = false;
 
 	void Start() {
 		text = GetComponent<Text> ();
@@ -14,7 +14,7 @@ public class TimerBehavior : MonoBehaviour {
 	}
 
 	void Update () {
-		if (active) {
+		if (!finished) {
 			UpdateTimer();
 
 			int displaySeconds = (int)(timer % 60);
@@ -32,10 +32,10 @@ public class TimerBehavior : MonoBehaviour {
 	void UpdateTimer() {
 		timer -= Time.deltaTime;
 
-		if ((int)timer == 60) {
+		if ((int)timer == 175) {
 			GameControllerBehavior.instance.TimerHurry();
 		} else if ((int)timer == 0) {
-			active = false;
+			finished = true;
 			GameControllerBehavior.instance.TimerFinished();
 		}
 	}
