@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StageGenerator : MonoBehaviour {
-
 	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
 	public int nPlayers = 1;

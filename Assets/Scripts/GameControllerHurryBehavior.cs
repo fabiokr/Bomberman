@@ -10,20 +10,24 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 	};
 
 	public GameObject block;
+	public float speed = 0.05f;
 	
 	float lastUpdate;
 	Vector3 currentPosition;
-	int directionIndex;
+	int directionIndex, pathSize, currentPathSize, currentTurn;
 
 	void Start () {
 		Debug.Log("HURRY!");
 		directionIndex = 3;
+		pathSize = GameControllerBehavior.instance.stageGenerator.size - 3;
+		currentPathSize = pathSize;
+		currentTurn = 3;
 		lastUpdate = Time.time;
 		currentPosition = GameControllerBehavior.instance.startingPosition;
 	}
 
 	void Update () {
-		if (Time.time - lastUpdate >= 1f) {
+		if (Time.time - lastUpdate >= speed) {
 			InstantiateBlock();
 			UpdateNextPosition();
 
@@ -39,17 +43,27 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 	}
 
 	void UpdateNextPosition() {
-		// if the next one is a block
-		if(Util.GetClosest(Tags.Block, currentPosition + DIRS[directionIndex], 0.5f)) {
+		currentPosition += DIRS[directionIndex];
+		currentPathSize -= 1;
+
+		if(currentPathSize <= 0) {
 			// change direction
 			directionIndex = NextDirectionIndex();
+			
+			currentTurn -= 1;
+
+			if(currentTurn == 0) {
+				pathSize -= 1;
+				currentTurn = 2;
+			}
+
+			if(pathSize <= 0 && currentPathSize <= 0 && currentTurn == 1) {
+				enabled = false;
+			}
+			
+			currentPathSize = pathSize;
+
 		}
-
-		currentPosition += DIRS[directionIndex];
-
-		//if(true) {
-		//	enabled = false;
-		//}
 	}
 
 	int NextDirectionIndex() {
