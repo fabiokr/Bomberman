@@ -62,7 +62,11 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 			}
 			
 			currentPathSize = pathSize;
+		}
 
+		// skip current position if it already contains a block
+		if(Util.GetClosest(Tags.Block, currentPosition, 0.5f)) {
+			UpdateNextPosition();
 		}
 	}
 
