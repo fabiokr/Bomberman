@@ -10,26 +10,21 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 	};
 
 	public GameObject block;
-	public float speed = 0.05f;
 	
-	float lastUpdate;
+	float speed, lastUpdate;
 	Vector3 currentPosition;
 	int directionIndex, pathSize, currentPathSize, currentTurn;
 
 	void Start () {
 		Debug.Log("HURRY!");
-		directionIndex = 3;
-		pathSize = GameControllerBehavior.instance.stageGenerator.size - 3;
-		currentPathSize = pathSize;
-		currentTurn = 3;
-		lastUpdate = Time.time;
-		currentPosition = GameControllerBehavior.instance.startingPosition;
+		CalculateSpeed ();
+		Prepare ();
 	}
 
 	void Update () {
 		if (Time.time - lastUpdate >= speed) {
 			InstantiateBlock();
-			UpdateNextPosition();
+			enabled = UpdateNextPosition();
 
 			lastUpdate = Time.time;
 		}
@@ -42,7 +37,7 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 		b.AddComponent<HurryBlockBehavior>();
 	}
 
-	void UpdateNextPosition() {
+	bool UpdateNextPosition() {
 		currentPosition += DIRS[directionIndex];
 		currentPathSize -= 1;
 
@@ -58,7 +53,7 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 			}
 
 			if(pathSize <= 0 && currentPathSize <= 0 && currentTurn == 1) {
-				enabled = false;
+				return false;
 			}
 			
 			currentPathSize = pathSize;
@@ -68,6 +63,8 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 		if(Util.GetClosest(Tags.Block, currentPosition, 0.5f)) {
 			UpdateNextPosition();
 		}
+
+		return true;
 	}
 
 	int NextDirectionIndex() {
@@ -76,5 +73,26 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 		} else {
 			return directionIndex + 1;
 		}
+	}
+
+	void CalculateSpeed() {
+		Prepare ();
+
+		int count = 0;
+
+		while (UpdateNextPosition()) {
+			count += 1;
+		}
+
+		speed = 60f / count;
+	}
+
+	void Prepare() {
+		directionIndex = 3;
+		pathSize = GameControllerBehavior.instance.stageGenerator.size - 3;
+		currentPathSize = pathSize;
+		currentTurn = 3;
+		lastUpdate = Time.time;
+		currentPosition = GameControllerBehavior.instance.startingPosition;
 	}
 }

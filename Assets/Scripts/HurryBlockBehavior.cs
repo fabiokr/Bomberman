@@ -9,7 +9,7 @@ public class HurryBlockBehavior : MonoBehaviour {
 	void Update () {
 		transform.position = new Vector3(
 			transform.position.x, 
-			transform.position.y - 20f * Time.deltaTime, 
+			transform.position.y - 30f * Time.deltaTime, 
 			transform.position.z);
 
 		if (transform.position.y < 0.5f) {

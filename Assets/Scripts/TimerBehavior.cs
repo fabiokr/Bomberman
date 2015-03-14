@@ -32,7 +32,7 @@ public class TimerBehavior : MonoBehaviour {
 	void UpdateTimer() {
 		timer -= Time.deltaTime;
 
-		if ((int)timer == 175) {
+		if ((int)timer == 60) {
 			GameControllerBehavior.instance.TimerHurry();
 		} else if ((int)timer == 0) {
 			finished = true;

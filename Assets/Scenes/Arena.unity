@@ -385,7 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 143962, guid: 0a36d9494058f4a4cb923f84e711fa40, type: 2}
-  speed: .5
 --- !u!1 &1723532098
 GameObject:
   m_ObjectHideFlags: 0
