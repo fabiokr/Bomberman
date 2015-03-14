@@ -10,28 +10,53 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 	};
 
 	public GameObject block;
-
-	bool finished = false;
+	
 	float lastUpdate;
-	Vector3 direction, currentPosition;
+	Vector3 currentPosition;
+	int directionIndex;
 
 	void Start () {
 		Debug.Log("HURRY!");
-		direction = Vector3.forward;
+		directionIndex = 3;
 		lastUpdate = Time.time;
 		currentPosition = GameControllerBehavior.instance.startingPosition;
-		currentPosition = new Vector3 (currentPosition.x, 10f, currentPosition.z);
 	}
 
 	void Update () {
-		if (!finished && Time.time - lastUpdate >= 1f) {
-			GameObject b = Instantiate(block) as GameObject;
-			b.transform.parent = transform.root.Find(Stage.Bricks);
-			b.transform.position = currentPosition;
-			b.AddComponent<HurryBlockBehavior>();
+		if (Time.time - lastUpdate >= 1f) {
+			InstantiateBlock();
+			UpdateNextPosition();
 
 			lastUpdate = Time.time;
-			finished = true;
+		}
+	}
+
+	void InstantiateBlock() {
+		GameObject b = Instantiate(block) as GameObject;
+		b.transform.parent = transform.root.Find(Stage.Bricks);
+		b.transform.position = currentPosition + new Vector3(0, 10f, 0);
+		b.AddComponent<HurryBlockBehavior>();
+	}
+
+	void UpdateNextPosition() {
+		// if the next one is a block
+		if(Util.GetClosest(Tags.Block, currentPosition + DIRS[directionIndex], 0.5f)) {
+			// change direction
+			directionIndex = NextDirectionIndex();
+		}
+
+		currentPosition += DIRS[directionIndex];
+
+		//if(true) {
+		//	enabled = false;
+		//}
+	}
+
+	int NextDirectionIndex() {
+		if(directionIndex + 1 > DIRS.Length - 1) {
+			return 0;
+		} else {
+			return directionIndex + 1;
 		}
 	}
 }
