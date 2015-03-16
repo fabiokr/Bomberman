@@ -338,8 +338,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1361435603}
+  - 114: {fileID: 1361435604}
   - 114: {fileID: 1361435602}
-  - 82: {fileID: 1361435604}
+  - 82: {fileID: 1361435605}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -358,7 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d542006a0f744564895b81a209c63e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTimer: 70
+  startingTimer: 180
+  startingPosition: {x: 0, y: 0, z: 0}
+  stageGenerator: {fileID: 0}
 --- !u!4 &1361435603
 Transform:
   m_ObjectHideFlags: 0
@@ -371,7 +374,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &1361435604
+--- !u!114 &1361435604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1361435601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fb12df543892243bd52341f8899655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block: {fileID: 143962, guid: 0a36d9494058f4a4cb923f84e711fa40, type: 2}
+--- !u!82 &1361435605
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

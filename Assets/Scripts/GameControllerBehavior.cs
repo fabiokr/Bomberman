@@ -1,21 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (GameControllerHurryBehavior))]
 public class GameControllerBehavior : MonoBehaviour {
 	public static GameControllerBehavior instance { get; private set; }
 
 	public int startingTimer = 180;
+	public Vector3 startingPosition;
+	public StageGenerator stageGenerator;
 
-	bool timerHurry = false, timerFinished = false;
+	bool timerFinished = false;
+	
+	GameControllerHurryBehavior hurryBehavior;
 	
 	void Start () {
 		instance = this;
+		stageGenerator = GameObject.FindGameObjectWithTag (Tags.Stage).GetComponent<StageGenerator>();
+		hurryBehavior = GetComponent<GameControllerHurryBehavior> ();
+		hurryBehavior.enabled = false;
 	}
 
 	public void TimerHurry() {
-		if (!timerHurry) {
-			timerHurry = true;
-			Debug.Log("HURRY!");
+		if (!hurryBehavior.enabled) {
+			hurryBehavior.enabled = true;
 		}
 	}
 

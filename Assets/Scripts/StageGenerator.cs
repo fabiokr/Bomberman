@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StageGenerator : MonoBehaviour {
-
 	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
 	public int nPlayers = 1;
@@ -43,6 +42,10 @@ public class StageGenerator : MonoBehaviour {
 						b.transform.parent = transform.Find(Stage.Players);
 						b.transform.position = new Vector3(localPosition.x, 0.9f, localPosition.z);
 						players++;
+
+						if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
+							GameControllerBehavior.instance.startingPosition = localPosition;
+						}
 					}
 				} else if((x == offset - 1 && y == offset - 1) || (x == offset - 2 && y == offset - 1) || (x == offset - 1 && y == offset - 2)) {
 					// empty

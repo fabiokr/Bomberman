@@ -59,8 +59,11 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 			}
 		}
 
-		BombermanBehavior b = bomberman.GetComponent<BombermanBehavior> ();
-		b.RemoveBomb (gameObject);
+		if (bomberman) {
+			BombermanBehavior b = bomberman.GetComponent<BombermanBehavior> ();
+			b.RemoveBomb (gameObject);
+		}
+
 		Destroy (gameObject);
 	}
 }
