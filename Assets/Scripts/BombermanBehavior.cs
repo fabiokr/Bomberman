@@ -13,6 +13,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public GameObject bomb;
 	public float speed = 2f, maxSpeed = 5f, bombSpeed = 4.5f, minBombSpeed = 3f;
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
+	public Animation anim;
 
 	StageGenerator stageGenerator;
 
@@ -21,6 +22,9 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	void Start() {
 		bombs = new List<GameObject> ();
 		stageGenerator = GameObject.FindGameObjectWithTag(Tags.Stage).GetComponent<StageGenerator>();
+		anim = GetComponent<Animation>();
+		anim ["Idle"].speed = 1.0f;
+		anim ["Walk"].speed = 3.0f;
 	}
 
 	void FixedUpdate ()
@@ -37,24 +41,27 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 		bool move = false;
 		
 		if(moveVertical > 0) {
-			vLook.y = 0.0f;
-			move = true;
-		} else if(moveHorizontal > 0) {
 			vLook.y = 90.0f;
 			move = true;
-		} else if(moveVertical < 0) {
+		} else if(moveHorizontal > 0) {
 			vLook.y = 180.0f;
 			move = true;
-		} else if(moveHorizontal < 0) {
+		} else if(moveVertical < 0) {
 			vLook.y = 270.0f;
+			move = true;
+		} else if(moveHorizontal < 0) {
+			vLook.y = 0.0f;
 			move = true;
 		}  
 		
-		if(move) {
+		if (move) {
 			transform.eulerAngles = vLook;
-			transform.position += transform.forward * speed * Time.deltaTime;
-		} else if(rigidbody.velocity.magnitude > 0) {
+			transform.position -= transform.right * speed * Time.deltaTime;
+			anim.CrossFade ("Walk");
+		} else if (rigidbody.velocity.magnitude > 0) {
 			rigidbody.velocity = Vector3.zero;
+		} else {
+			anim.CrossFade ("Idle");
 		}
 	}
 

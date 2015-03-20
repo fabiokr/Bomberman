@@ -40,7 +40,7 @@ public class StageGenerator : MonoBehaviour {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
 						b.transform.parent = transform.Find(Stage.Players);
-						b.transform.position = new Vector3(localPosition.x, 0.9f, localPosition.z);
+						b.transform.position = new Vector3(localPosition.x, 0.0f, localPosition.z);
 						players++;
 
 						if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
