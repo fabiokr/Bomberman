@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class StageGenerator : MonoBehaviour {
 	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
-	public int nPlayers = 1;
+	public int nPlayers = 2;
 	public float itemFrequency = 0.1f, emptyBlocksFrequency = 0.1f;
 
 	public List<GameObject> items;
