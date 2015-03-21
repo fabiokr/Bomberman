@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
+[RequireComponent(typeof(AudioSource))]
 public class Boundary
 {
 	public float xMin, xMax, zMin, zMax;
@@ -15,6 +16,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
 	public int player_number;
 	public Controls controls;
+	public AudioClip catchItem;
 
 	StageGenerator stageGenerator;
 
@@ -83,31 +85,41 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 		}
 	}
 
+	public void PlayCatchItemSound () {
+		Debug.Log ("Playing ItemCatch sound");
+		audio.PlayOneShot (catchItem, 0.7f);
+	}
+
 	public void AddBombLimit() {
+		PlayCatchItemSound ();
 		if (bombLimit + 1 <= stageGenerator.size) {
 			bombLimit += 1;
 		}
 	}
 
 	public void AddBombPower() {
+		PlayCatchItemSound ();
 		if (bombPower + 1 <= stageGenerator.size) {
 			bombPower += 1;
 		}
 	}
 
 	public void AddSpeed() {
+		PlayCatchItemSound ();
 		if (speed + 0.5f <= maxSpeed) {
 			speed += 0.5f;
 		}
 	}
 
 	public void AddHp() {
+		PlayCatchItemSound ();
 		if (hp + 1 <= maxHp) {
 			hp += 1;
 		}
 	}
 
 	public void DecreaseBombSpeed() {
+		PlayCatchItemSound ();
 		if (bombSpeed - 1 >= minBombSpeed) {
 			bombSpeed -= 1;
 		}
