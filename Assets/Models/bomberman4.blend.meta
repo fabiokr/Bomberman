@@ -1,0 +1,282 @@
+fileFormatVersion: 2
+guid: 618db7c772b3101469778c460148c377
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Armature
+    100006: Bomberman
+    100008: //RootNode
+    100010: Foot_L
+    100012: Foot_R
+    100014: Head
+    100016: Leg_L
+    100018: Leg_R
+    100020: Root
+    400000: Arm_L
+    400002: Arm_R
+    400004: Armature
+    400006: Bomberman
+    400008: //RootNode
+    400010: Foot_L
+    400012: Foot_R
+    400014: Head
+    400016: Leg_L
+    400018: Leg_R
+    400020: Root
+    4300000: Bomberman
+    7400000: Default Take
+    7400002: Idle
+    7400004: Walk
+    7400006: Win
+    7400008: Death
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Bomberman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 1
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Leg_L
+        weight: 1
+      - path: Armature/Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Leg_R
+        weight: 1
+      - path: Armature/Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Bomberman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 1
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Leg_L
+        weight: 1
+      - path: Armature/Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Leg_R
+        weight: 1
+      - path: Armature/Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Bomberman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Win
+      takeName: Win
+      firstFrame: 1
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Leg_L
+        weight: 1
+      - path: Armature/Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Leg_R
+        weight: 1
+      - path: Armature/Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Bomberman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Death
+      takeName: Death
+      firstFrame: 1
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Leg_L
+        weight: 1
+      - path: Armature/Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Leg_R
+        weight: 1
+      - path: Armature/Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Bomberman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Root
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
