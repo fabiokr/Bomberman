@@ -13,7 +13,6 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public GameObject bomb;
 	public float speed = 2f, maxSpeed = 5f, bombSpeed = 4.5f, minBombSpeed = 3f;
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
-	public Animation anim;
 	public int player_number;
 	public Controls controls;
 
@@ -24,10 +23,9 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	void Start() {
 		bombs = new List<GameObject> ();
 		stageGenerator = GameObject.FindGameObjectWithTag(Tags.Stage).GetComponent<StageGenerator>();
-		anim = GetComponent<Animation>();
-		anim ["Idle"].speed = 1.0f;
-		anim ["Walk"].speed = 3.0f;
 		controls = new Controls (player_number);
+		animation ["Idle"].speed = 1.0f;
+		animation ["Walk"].speed = 3.0f;
 	}
 
 	void FixedUpdate ()
@@ -62,11 +60,11 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 		if (move) {
 			transform.eulerAngles = vLook;
 			transform.position -= transform.right * speed * Time.deltaTime;
-			anim.CrossFade ("Walk");
+			animation.CrossFade ("Walk");
 		} else if (rigidbody.velocity.magnitude > 0) {
 			rigidbody.velocity = Vector3.zero;
 		} else {
-			anim.CrossFade ("Idle");
+			animation.CrossFade ("Idle");
 		}
 	}
 

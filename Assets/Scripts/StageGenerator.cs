@@ -7,6 +7,7 @@ public class StageGenerator : MonoBehaviour {
 	public int size = 15;
 	public int nPlayers = 2;
 	public float itemFrequency = 0.1f, emptyBlocksFrequency = 0.1f;
+	Renderer rend;
 
 	public List<GameObject> items;
 
@@ -47,11 +48,15 @@ public class StageGenerator : MonoBehaviour {
 						b.transform.parent = transform.Find(Stage.Players);
 						b.transform.position = new Vector3(localPosition.x, 0.0f, localPosition.z);
 
-						players++;
+						// Setup player clothes
+						rend = b.GetComponentInChildren<Renderer> ();
+						rend.materials = BombermanColors.GetBombermanColors(players, rend.materials);
 
 						if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
 							GameControllerBehavior.instance.startingPosition = localPosition;
 						}
+
+						players++;
 					}
 				} else if((x == offset - 1 && y == offset - 1) || (x == offset - 2 && y == offset - 1) || (x == offset - 1 && y == offset - 2)) {
 					// empty
