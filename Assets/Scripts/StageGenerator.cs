@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class StageGenerator : MonoBehaviour {
 	public GameObject ground, block, destructibleBlock, player;
 	public int size = 15;
-	public int nPlayers = 1;
+	public int nPlayers = 2;
 	public float itemFrequency = 0.1f, emptyBlocksFrequency = 0.1f;
 
 	public List<GameObject> items;
@@ -39,6 +39,7 @@ public class StageGenerator : MonoBehaviour {
 				if(x == offset - 1 && y == offset - 1) {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
+						b.name = "Player " + (players + 1);
 						b.transform.parent = transform.Find(Stage.Players);
 						b.transform.position = new Vector3(localPosition.x, 0.0f, localPosition.z);
 						players++;

@@ -29,8 +29,10 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 
 	void FixedUpdate ()
 	{
-		Move ();
-		PlaceBomb ();
+		if (GameControllerBehavior.instance.gameInProgress) {
+			Move ();
+			PlaceBomb ();
+		}
 	}
 
 	void Move() {
