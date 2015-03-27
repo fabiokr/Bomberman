@@ -14,6 +14,8 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public float speed = 2f, maxSpeed = 5f, bombSpeed = 4.5f, minBombSpeed = 3f;
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
 	public Animation anim;
+	public int player_number;
+	public Controls controls;
 
 	StageGenerator stageGenerator;
 
@@ -25,6 +27,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 		anim = GetComponent<Animation>();
 		anim ["Idle"].speed = 1.0f;
 		anim ["Walk"].speed = 3.0f;
+		controls = new Controls (player_number);
 	}
 
 	void FixedUpdate ()
@@ -36,22 +39,22 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	void Move() {
-		float moveHorizontal = Input.GetAxis (Controls.Horizontal);
-		float moveVertical = Input.GetAxis (Controls.Vertical);
+		float moveHorizontal = 0.0f;
+		float moveVertical = 0.0f;
 		
 		Vector3 vLook = transform.eulerAngles;
 		bool move = false;
 		
-		if(moveVertical > 0) {
+		if(controls.getUp()) {
 			vLook.y = 90.0f;
 			move = true;
-		} else if(moveHorizontal > 0) {
+		} else if(controls.getRight()) {
 			vLook.y = 180.0f;
 			move = true;
-		} else if(moveVertical < 0) {
+		} else if(controls.getDown()) {
 			vLook.y = 270.0f;
 			move = true;
-		} else if(moveHorizontal < 0) {
+		} else if(controls.getLeft()) {
 			vLook.y = 0.0f;
 			move = true;
 		}  
@@ -68,7 +71,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	void PlaceBomb() {
-		if (Input.GetKeyUp (Controls.Bomb)) {
+		if (controls.getPlaceBomb()) {
 			if(bombs.Count < bombLimit && !HasBomb()) {
 				GameObject b = Instantiate(bomb, GetGround().transform.position, Quaternion.identity) as GameObject;
 				b.transform.parent = transform.root.Find(Stage.Bombs);
