@@ -39,9 +39,14 @@ public class StageGenerator : MonoBehaviour {
 				if(x == offset - 1 && y == offset - 1) {
 					if(players < nPlayers) {
 						b = Instantiate(player) as GameObject;
-						b.name = "Player " + (players + 1);
+
+						BombermanBehavior bb = b.GetComponent<BombermanBehavior> ();
+						bb.player_number = players + 1;
+
+						b.name = "Player " + bb.player_number;
 						b.transform.parent = transform.Find(Stage.Players);
 						b.transform.position = new Vector3(localPosition.x, 0.0f, localPosition.z);
+
 						players++;
 
 						if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
