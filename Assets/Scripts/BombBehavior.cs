@@ -39,19 +39,24 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 		// Explosion effect
 		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
 
+		Ray ray;
+		RaycastHit hit;
+
+		// Current postion hit check from a revesal ray
+		ray = new Ray(new Ray(transform.position, Vector3.up).GetPoint(5), Vector3.down);
+
+		if (Physics.Raycast (ray, out hit, 10)) {
+			ExplosionHit(hit);
+		}
+
+		// Directional positions hit checks
 		for (int i = 1; i <= power; i++) {
 			foreach (Vector3 dir in DIRS) {
-				RaycastHit hit;
-
-				if (Physics.Raycast (transform.position, dir, out hit, i)) {
-					ExplodableInterface explodable = (ExplodableInterface)hit.transform.GetComponent (typeof(ExplodableInterface));
-
-					if (explodable != null) {
-						Debug.Log("Explodable:" + explodable);
-						explodable.Explode ();
-					}
-				}
-				else {
+				ray = new Ray(transform.position, dir);
+			
+				if (Physics.Raycast (ray, out hit, i)) {
+					ExplosionHit(hit);
+				} else {
 					// Explosion fire effect
 					GameObject fire = Instantiate (explosion_fire_prefab, transform.position + (dir * i), Quaternion.identity) as GameObject;
 					Destroy (fire, 3.0f); // Auto destroy after 3 seconds
@@ -65,5 +70,16 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 		}
 
 		Destroy (gameObject);
+	}
+
+	void ExplosionHit(RaycastHit hit) {
+		Debug.Log("Hit:" + hit.transform.gameObject);
+		
+		ExplodableInterface explodable = (ExplodableInterface)hit.transform.GetComponent (typeof(ExplodableInterface));
+		
+		if (explodable != null) {
+			Debug.Log("Explodable:" + explodable);
+			explodable.Explode ();
+		}
 	}
 }
