@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent (typeof (GameControllerHurryBehavior))]
+[RequireComponent (typeof (AudioSource))]
 public class GameControllerBehavior : MonoBehaviour {
 	public static GameControllerBehavior instance { get; private set; }
 
@@ -95,6 +96,7 @@ public class GameControllerBehavior : MonoBehaviour {
 		gameInProgress = false;
 		hurryBehavior.enabled = false;
 		TimerFinished ();
+		StartCoroutine(LoadStartMenu());
 	}
 
 	GameObject[] BombermanList() {
@@ -113,6 +115,11 @@ public class GameControllerBehavior : MonoBehaviour {
 	IEnumerator PlayAudioDelayed(AudioClip clip, float delay) {
 		yield return new WaitForSeconds(delay);
 		PlayAudio (clip);
+	}
+
+	IEnumerator LoadStartMenu() {
+		yield return new WaitForSeconds(5);
+		Application.LoadLevel ("Start"); 
 	}
 
 	void PlayAudio(AudioClip clip) {
