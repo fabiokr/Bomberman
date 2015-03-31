@@ -426,12 +426,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTimer: 180
+  gameStartDelay: 5
   gameInProgress: 0
   gameStarted: 0
   timer: 0
   startingPosition: {x: 0, y: 0, z: 0}
   stageGenerator: {fileID: 0}
   gameOverText: {fileID: 1140241247}
+  startClip: {fileID: 8300000, guid: 49db99f2e491b3b4cb468b63ba29d8b1, type: 3}
+  battleClip: {fileID: 8300000, guid: 9c68078dd32661a43baa3713a17f3dfb, type: 3}
+  battleHurryClip: {fileID: 8300000, guid: e0f96277e3701374d90b9680fc3a0562, type: 3}
+  winClip: {fileID: 8300000, guid: 7f2c5b55d84f68f4d8dc7afc59ae5363, type: 3}
+  drawClip: {fileID: 8300000, guid: 34c9d0ac168f3fe40b421bbee5f5a10e, type: 3}
 --- !u!4 &1361435603
 Transform:
   m_ObjectHideFlags: 0
@@ -464,11 +470,11 @@ AudioSource:
   m_GameObject: {fileID: 1361435601}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: e8183948bae2efd47b3a21251845136e, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: .5
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
