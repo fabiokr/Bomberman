@@ -14,6 +14,8 @@ ModelImporter:
     100016: Leg_L
     100018: Leg_R
     100020: Root
+    100022: Bone
+    100024: Bone_001
     400000: Arm_L
     400002: Arm_R
     400004: Armature
@@ -25,6 +27,10 @@ ModelImporter:
     400016: Leg_L
     400018: Leg_R
     400020: Root
+    400022: Bone
+    400024: Bone_001
+    2300000: Bomberman
+    3300000: Bomberman
     4300000: Bomberman
     7400000: Default Take
     7400002: Idle
@@ -36,7 +42,7 @@ ModelImporter:
     13700000: Bomberman
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -51,10 +57,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk
-      takeName: Walk
+      name: Death
+      takeName: Death
       firstFrame: 1
-      lastFrame: 31
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -82,17 +88,13 @@ ModelImporter:
         weight: 1
       - path: Armature/Arm_R
         weight: 1
-      - path: Armature/Head
-        weight: 1
       - path: Armature/Leg_L
-        weight: 1
-      - path: Armature/Leg_L/Foot_L
         weight: 1
       - path: Armature/Leg_R
         weight: 1
-      - path: Armature/Leg_R/Foot_R
-        weight: 1
       - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Head
         weight: 1
       - path: Bomberman
         weight: 1
@@ -130,17 +132,57 @@ ModelImporter:
         weight: 1
       - path: Armature/Arm_R
         weight: 1
-      - path: Armature/Head
-        weight: 1
       - path: Armature/Leg_L
-        weight: 1
-      - path: Armature/Leg_L/Foot_L
         weight: 1
       - path: Armature/Leg_R
         weight: 1
-      - path: Armature/Leg_R/Foot_R
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Head
+        weight: 1
+      - path: Bomberman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 1
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Leg_L
+        weight: 1
+      - path: Armature/Leg_R
         weight: 1
       - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Head
         weight: 1
       - path: Bomberman
         weight: 1
@@ -178,65 +220,13 @@ ModelImporter:
         weight: 1
       - path: Armature/Arm_R
         weight: 1
-      - path: Armature/Head
-        weight: 1
       - path: Armature/Leg_L
-        weight: 1
-      - path: Armature/Leg_L/Foot_L
         weight: 1
       - path: Armature/Leg_R
         weight: 1
-      - path: Armature/Leg_R/Foot_R
-        weight: 1
       - path: Armature/Root
         weight: 1
-      - path: Bomberman
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-    - serializedVersion: 16
-      name: Death
-      takeName: Death
-      firstFrame: 1
-      lastFrame: 33
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/Arm_L
-        weight: 1
-      - path: Armature/Arm_R
-        weight: 1
-      - path: Armature/Head
-        weight: 1
-      - path: Armature/Leg_L
-        weight: 1
-      - path: Armature/Leg_L/Foot_L
-        weight: 1
-      - path: Armature/Leg_R
-        weight: 1
-      - path: Armature/Leg_R/Foot_R
-        weight: 1
-      - path: Armature/Root
+      - path: Armature/Root/Head
         weight: 1
       - path: Bomberman
         weight: 1
@@ -245,7 +235,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .0700000003
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

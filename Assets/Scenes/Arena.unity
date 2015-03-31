@@ -544,7 +544,7 @@ MonoBehaviour:
   ground: {fileID: 125880, guid: 4c02e673102d507428a1ddd2b8634c79, type: 2}
   block: {fileID: 143962, guid: 0a36d9494058f4a4cb923f84e711fa40, type: 2}
   destructibleBlock: {fileID: 135812, guid: db76e6b5e16a9d74ab1c6350dff431e6, type: 2}
-  player: {fileID: 106056, guid: 713dc337c5ee6bb43b4ffeff79966fc0, type: 2}
+  player: {fileID: 172056, guid: 20552ec08a4b1eb4d9cec7399329db51, type: 2}
   size: 15
   nPlayers: 4
   itemFrequency: 1
