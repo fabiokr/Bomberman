@@ -129,11 +129,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472056}
-  - 111: {fileID: 11172040}
-  - 136: {fileID: 13651032}
   - 54: {fileID: 5454626}
   - 114: {fileID: 11423606}
   - 82: {fileID: 8284052}
+  - 111: {fileID: 11106036}
+  - 136: {fileID: 13678996}
   m_Layer: 0
   m_Name: bomberman4
   m_TagString: Bomberman
@@ -277,7 +277,7 @@ AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106056}
+  m_GameObject: {fileID: 172056}
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 0}
@@ -314,7 +314,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -332,7 +332,7 @@ AudioSource:
     m_PostInfinity: 2
 --- !u!111 &11106036
 Animation:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172056}
@@ -373,11 +373,11 @@ MonoBehaviour:
   bombPower: 1
   hp: 1
   maxHp: 2
-  anim: {fileID: 0}
+  player_number: 0
   catchItem: {fileID: 8300000, guid: da7303b718494be4e90099e27ccdfef8, type: 3}
 --- !u!136 &13678996
 CapsuleCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172056}

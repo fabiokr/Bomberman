@@ -86,7 +86,6 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	public void PlayCatchItemSound () {
-		Debug.Log ("Playing ItemCatch sound");
 		audio.PlayOneShot (catchItem, 0.7f);
 	}
 
