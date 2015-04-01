@@ -86,7 +86,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	public void PlayCatchItemSound () {
-		audio.PlayOneShot (catchItem, 0.7f);
+		audio.PlayOneShot (catchItem);
 	}
 
 	public void AddBombLimit() {
