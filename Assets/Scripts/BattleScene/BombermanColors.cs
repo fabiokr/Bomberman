@@ -12,8 +12,6 @@ public class BombermanColors : MonoBehaviour {
 
 			for (int j = 0; j < orig_materials.Length; j++) {
 				materials[i][j] = new Material(orig_materials[j]);
-
-				Debug.Log(materials[i][j]);
 			}
 		}
 
@@ -38,6 +36,29 @@ public class BombermanColors : MonoBehaviour {
 		materials [1] [6].color = new Color (0.218f, 0.126f, 0.904f); // Belt
 //		materials [1] [7].color = new Color (0.800f, 0.472f, 0.224f); // Base
 //		materials [1] [8].color = new Color (1.0f, 0.877f, 0.191f); // Buckle
+
+
+		// Player 3
+		materials [2] [0].color = new Color (0.0f, 0.0f, 0.0f); // Torso
+		materials [2] [1].color = Color.red; // Helmet
+		//		materials [2] [2].color = new Color (0.800f, 0.224f, 0.505f); // Face
+		//		materials [2] [3].color = new Color (0.800f, 0.224f, 0.505f); // Hands
+		//		materials [2] [4].color = new Color (1.0f, 0.877f, 0.191f); // Eyes
+		materials [2] [5].color = new Color (0.800f, 0.472f, 0.224f); // Arms
+		materials [2] [6].color = new Color (0.218f, 0.126f, 0.904f); // Belt
+		//		materials [2] [7].color = new Color (0.800f, 0.472f, 0.224f); // Base
+		//		materials [2] [8].color = new Color (1.0f, 0.877f, 0.191f); // Buckle
+
+		// Player 4
+		materials [3] [0].color = new Color (0.0f, 0.0f, 0.0f); // Torso
+		materials [3] [1].color = Color.blue; // Helmet
+		//		materials [3] [2].color = new Color (0.800f, 0.224f, 0.505f); // Face
+		//		materials [3] [3].color = new Color (0.800f, 0.224f, 0.505f); // Hands
+		//		materials [3] [4].color = new Color (1.0f, 0.877f, 0.191f); // Eyes
+		materials [3] [5].color = new Color (0.800f, 0.472f, 0.224f); // Arms
+		materials [3] [6].color = new Color (0.218f, 0.126f, 0.904f); // Belt
+		//		materials [3] [7].color = new Color (0.800f, 0.472f, 0.224f); // Base
+		//		materials [3] [8].color = new Color (1.0f, 0.877f, 0.191f); // Buckle
 
 		return materials [player];
 	}
