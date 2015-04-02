@@ -12,6 +12,7 @@ public class StageGenerator : MonoBehaviour {
 	public List<GameObject> items;
 
 	int players = 0;
+	List<Vector3> playersPositions;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class StageGenerator : MonoBehaviour {
 		}
 
 		float offset = (size / 2f) - 0.5f;
+		playersPositions = new List<Vector3> ();
 
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < size; j++) {
@@ -38,25 +40,10 @@ public class StageGenerator : MonoBehaviour {
 				GameObject b = null;
 
 				if(x == offset - 1 && y == offset - 1) {
-					if(players < nPlayers) {
-						b = Instantiate(player) as GameObject;
+					playersPositions.Add(new Vector3(localPosition.x, 0.0f, localPosition.z));
 
-						BombermanBehavior bb = b.GetComponent<BombermanBehavior> ();
-						bb.player_number = players + 1;
-
-						b.name = "Player " + bb.player_number;
-						b.transform.parent = transform.Find(Stage.Players);
-						b.transform.position = new Vector3(localPosition.x, 0.0f, localPosition.z);
-
-						// Setup player clothes
-						rend = b.GetComponentInChildren<Renderer> ();
-						rend.materials = BombermanColors.GetBombermanColors(players, rend.materials);
-
-						if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
-							GameControllerBehavior.instance.startingPosition = localPosition;
-						}
-
-						players++;
+					if(GameControllerBehavior.instance.startingPosition == new Vector3(0, 0, 0)) {
+						GameControllerBehavior.instance.startingPosition = localPosition;
 					}
 				} else if((x == offset - 1 && y == offset - 1) || (x == offset - 2 && y == offset - 1) || (x == offset - 1 && y == offset - 2)) {
 					// empty
@@ -75,6 +62,8 @@ public class StageGenerator : MonoBehaviour {
 				}
 			}
 		}
+
+		SetupPlayers ();
 	}
 
 	void OnDrawGizmosSelected() {
@@ -99,5 +88,36 @@ public class StageGenerator : MonoBehaviour {
 
 	private float HalfSize() {
 		return size / 2f;
+	}
+
+	private void SetupPlayers() {
+		List<Vector3> orderedPlayersPositions = new List<Vector3>();
+
+		// reorders positions
+		orderedPlayersPositions.Add (playersPositions [1]);
+		orderedPlayersPositions.Add (playersPositions [3]);
+		orderedPlayersPositions.Add (playersPositions [0]);
+		orderedPlayersPositions.Add (playersPositions [2]);
+
+		GameObject b = null;
+
+		foreach (Vector3 position in orderedPlayersPositions) {
+			if(players < nPlayers) {
+				b = Instantiate(player) as GameObject;
+				
+				BombermanBehavior bb = b.GetComponent<BombermanBehavior> ();
+				bb.player_number = players + 1;
+				
+				b.name = "Player " + bb.player_number;
+				b.transform.parent = transform.Find(Stage.Players);
+				b.transform.position = position;
+				
+				// Setup player clothes
+				rend = b.GetComponentInChildren<Renderer> ();
+				rend.materials = BombermanColors.GetBombermanColors(players, rend.materials);
+				
+				players++;
+			}
+		}
 	}
 }
