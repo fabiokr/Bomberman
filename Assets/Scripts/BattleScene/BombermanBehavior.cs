@@ -16,7 +16,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	public int bombLimit = 1, bombPower = 1, hp = 1, maxHp = 2;
 	public int player_number;
 	public Controls controls;
-	public AudioClip catchItem;
+	public AudioClip catchItem, dieAudioClip;
 
 	StageGenerator stageGenerator;
 
@@ -89,6 +89,10 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 		audio.PlayOneShot (catchItem);
 	}
 
+	public void PlayDieSound () {
+		audio.PlayOneShot (dieAudioClip);
+	}
+
 	public void AddBombLimit() {
 		PlayCatchItemSound ();
 		if (bombLimit + 1 <= stageGenerator.size) {
@@ -133,7 +137,8 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	public void Die() {
-		Destroy (gameObject);
+		PlayDieSound ();
+		Destroy (gameObject, 1.2f);
 	}
 
 	public void Explode() {

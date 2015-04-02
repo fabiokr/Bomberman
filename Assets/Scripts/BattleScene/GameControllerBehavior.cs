@@ -16,7 +16,7 @@ public class GameControllerBehavior : MonoBehaviour {
 	public StageGenerator stageGenerator;
 	public GameObject gameOverText;
 	AudioSource audioSource;
-	public AudioClip startClip, battleClip, battleHurryClip, winClip, drawClip;
+	public AudioClip startClip, battleClip, hurryClip, battleHurryClip, winClip, drawClip;
 
 	bool timerFinished = false;
 	float scriptStartingTime;
@@ -53,11 +53,18 @@ public class GameControllerBehavior : MonoBehaviour {
 
 	public void TimerHurry() {
 		if (!hurryBehavior.enabled) {
-			hurryBehavior.enabled = true;
 			SetGameOverText("Hurry!");
-			StartCoroutine(ClearGameOverText(3));
-			PlayAudio(battleHurryClip);
+			PlayAudio(hurryClip);
+			StartCoroutine(EnableHurryBehavior());
 		}
+	}
+
+	IEnumerator EnableHurryBehavior() {
+		yield return new WaitForSeconds(3f);
+		SetGameOverText ("");
+		PlayAudio (battleHurryClip);
+		yield return new WaitForSeconds(1f);
+		hurryBehavior.enabled = true;
 	}
 
 	public void TimerFinished() {
@@ -103,11 +110,6 @@ public class GameControllerBehavior : MonoBehaviour {
 		return GameObject.FindGameObjectsWithTag (Tags.Bomberman);
 	}
 
-	IEnumerator ClearGameOverText(float delay) {
-		yield return new WaitForSeconds(delay);
-		SetGameOverText ("");
-	}
-
 	void SetGameOverText(string text) {
 		gameOverText.GetComponent<Text> ().text = text;
 	}
@@ -123,6 +125,7 @@ public class GameControllerBehavior : MonoBehaviour {
 	}
 
 	void PlayAudio(AudioClip clip) {
+		audioSource.Stop ();
 		audioSource.clip = clip;
 		audioSource.Play();
 	}

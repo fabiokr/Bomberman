@@ -375,6 +375,7 @@ MonoBehaviour:
   maxHp: 2
   player_number: 0
   catchItem: {fileID: 8300000, guid: da7303b718494be4e90099e27ccdfef8, type: 3}
+  dieAudioClip: {fileID: 8300000, guid: a1a68f5d480461a489f9c203d8a8bf29, type: 3}
 --- !u!136 &13678996
 CapsuleCollider:
   m_ObjectHideFlags: 0
