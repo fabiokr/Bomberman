@@ -443,18 +443,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ded8617572af3498cbea46141bcce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxSpeed: 5
   boundary:
     xMin: 0
     xMax: 0
     zMin: 0
     zMax: 0
   bomb: {fileID: 166014, guid: 2aed96f9097e18a43b89525026ec7ddb, type: 2}
+  speed: 2
+  maxSpeed: 5
+  bombSpeed: 4.5
+  minBombSpeed: 3
   bombLimit: 1
   bombPower: 1
   hp: 1
   maxHp: 2
+  player_number: 0
+  catchItem: {fileID: 0}
 --- !u!136 &13673702
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -467,7 +471,7 @@ CapsuleCollider:
   m_Radius: .330000013
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: .75, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
