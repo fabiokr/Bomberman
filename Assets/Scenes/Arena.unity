@@ -478,6 +478,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1140241247}
   startClip: {fileID: 8300000, guid: 49db99f2e491b3b4cb468b63ba29d8b1, type: 3}
   battleClip: {fileID: 8300000, guid: 9c68078dd32661a43baa3713a17f3dfb, type: 3}
+  hurryClip: {fileID: 0}
   battleHurryClip: {fileID: 8300000, guid: e0f96277e3701374d90b9680fc3a0562, type: 3}
   winClip: {fileID: 8300000, guid: 7f2c5b55d84f68f4d8dc7afc59ae5363, type: 3}
   drawClip: {fileID: 8300000, guid: 34c9d0ac168f3fe40b421bbee5f5a10e, type: 3}
