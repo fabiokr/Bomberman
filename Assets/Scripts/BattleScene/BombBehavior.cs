@@ -73,12 +73,10 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	void ExplosionHit(RaycastHit hit) {
-		Debug.Log("Hit:" + hit.transform.gameObject);
-		
+
 		ExplodableInterface explodable = (ExplodableInterface)hit.transform.GetComponent (typeof(ExplodableInterface));
 		
 		if (explodable != null) {
-			Debug.Log("Explodable:" + explodable);
 			explodable.Explode ();
 		}
 	}
