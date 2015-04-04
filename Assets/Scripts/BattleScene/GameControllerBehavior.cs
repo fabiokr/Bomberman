@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class Music
+{
+	public AudioClip normalClip, hurryClip;
+}
 
 [RequireComponent (typeof (GameControllerHurryBehavior))]
 [RequireComponent (typeof (AudioSource))]
@@ -16,13 +23,16 @@ public class GameControllerBehavior : MonoBehaviour {
 	public StageGenerator stageGenerator;
 	public GameObject gameOverText;
 	AudioSource audioSource;
-	public AudioClip startClip, battleClip, hurryClip, battleHurryClip, winClip, drawClip;
+	public AudioClip startClip, hurryClip, winClip, drawClip;
+	public List<Music> playlist;
 
 	bool timerFinished = false;
 	float scriptStartingTime;
 	
 	GameControllerHurryBehavior hurryBehavior;
 	TimerBehavior timerBehavior;
+
+	Music music;
 	
 	void Start () {
 		scriptStartingTime = Time.time;
@@ -33,9 +43,11 @@ public class GameControllerBehavior : MonoBehaviour {
 		timer = startingTimer;
 		SetGameOverText ("Start!");
 
+		music = GetRandomMusic ();
+
 		audioSource = GetComponent<AudioSource> ();
 		StartCoroutine(PlayAudioDelayed(startClip, 0f));
-		StartCoroutine(PlayAudioDelayed(battleClip, gameStartDelay));
+		StartCoroutine(PlayAudioDelayed(music.normalClip, gameStartDelay));
 	}
 
 	void Update() {
@@ -62,7 +74,7 @@ public class GameControllerBehavior : MonoBehaviour {
 	IEnumerator EnableHurryBehavior() {
 		yield return new WaitForSeconds(3f);
 		SetGameOverText ("");
-		PlayAudio (battleHurryClip);
+		PlayAudio (music.hurryClip);
 		yield return new WaitForSeconds(1f);
 		hurryBehavior.enabled = true;
 	}
@@ -128,5 +140,9 @@ public class GameControllerBehavior : MonoBehaviour {
 		audioSource.Stop ();
 		audioSource.clip = clip;
 		audioSource.Play();
+	}
+
+	Music GetRandomMusic() {
+		return playlist[Random.Range (0, playlist.Count)];
 	}
 }
