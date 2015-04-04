@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (AudioSource))]
 public class HurryBlockBehavior : MonoBehaviour {
+	public AudioClip blockClip;
+
+	AudioSource audioSource;
+
 	void Start() {
+		audioSource = GetComponent<AudioSource> ();
 		gameObject.GetComponent<Collider> ().isTrigger = true;
 	}
 	
@@ -17,6 +23,9 @@ public class HurryBlockBehavior : MonoBehaviour {
 				transform.position.x, 
 				0.5f, 
 				transform.position.z);
+
+			audioSource.clip = blockClip;
+			audioSource.Play();
 
 			enabled = false;
 		}
