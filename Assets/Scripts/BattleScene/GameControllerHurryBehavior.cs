@@ -10,6 +10,7 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 	};
 
 	public GameObject block;
+	public AudioClip blockClip;
 	
 	float speed, lastUpdate;
 	Vector3 currentPosition;
@@ -35,6 +36,7 @@ public class GameControllerHurryBehavior : MonoBehaviour {
 		b.transform.parent = transform.root.Find(Stage.Bricks);
 		b.transform.position = currentPosition + new Vector3(0, 10f, 0);
 		b.AddComponent<HurryBlockBehavior>();
+		b.GetComponent<HurryBlockBehavior> ().blockClip = blockClip;
 	}
 
 	bool UpdateNextPosition() {
