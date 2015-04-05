@@ -90,6 +90,27 @@ public class StageGenerator : MonoBehaviour {
 		return size / 2f;
 	}
 
+	private Vector3 getPlayerRotation(int player, Vector3 eulerAngles) {
+		Vector3 ret = eulerAngles;
+
+		switch (player) {
+		case 1:
+			ret.y -= 90.0f;
+			break;
+		case 2:
+			ret.y -= 90.0f;
+			break;
+		case 3:
+			ret.y += 90.0f;
+			break;
+		case 4:
+			ret.y += 90.0f;
+			break;
+		}
+
+		return ret;
+	}
+
 	private void SetupPlayers() {
 		List<Vector3> orderedPlayersPositions = new List<Vector3>();
 
@@ -111,6 +132,7 @@ public class StageGenerator : MonoBehaviour {
 				b.name = "Player " + bb.player_number;
 				b.transform.parent = transform.Find(Stage.Players);
 				b.transform.position = position;
+				b.transform.eulerAngles = getPlayerRotation(bb.player_number, b.transform.eulerAngles);
 				
 				// Setup player clothes
 				rend = b.GetComponentInChildren<Renderer> ();
