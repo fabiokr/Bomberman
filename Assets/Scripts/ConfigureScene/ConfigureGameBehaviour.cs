@@ -4,9 +4,12 @@ using System.Collections;
 
 public class ConfigureGameBehaviour : MonoBehaviour {
 
+	GameObject press_button_alert;
 	string current_button;
 
 	void Start () {
+		press_button_alert = GameObject.Find ("Press_Button_Alert");
+		press_button_alert.SetActive (false); // Hide object
 		current_button = "";
 	}
 
@@ -25,6 +28,9 @@ public class ConfigureGameBehaviour : MonoBehaviour {
 
 				// Reset current button
 				current_button = "";
+
+				// Hide alert
+				press_button_alert.SetActive(false);
 			}
 		}
 	}
@@ -32,6 +38,7 @@ public class ConfigureGameBehaviour : MonoBehaviour {
 	public void SetCurrentButton(string button) {
 		Debug.Log ("Current button set to " + button);
 		current_button = button;
+		press_button_alert.SetActive(true); // Show alert
 	}
 
 	public void GoBack() {
