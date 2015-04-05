@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ConfigureGameBehaviour : MonoBehaviour {
 
 	string current_button;
-	Hashtable buttons;
 
 	void Start () {
-		buttons = new Hashtable();
 		current_button = "";
 	}
 
@@ -17,14 +15,13 @@ public class ConfigureGameBehaviour : MonoBehaviour {
 		if (e.isKey) {
 
 			if (current_button.Length > 0) {
+				string player = GetPlayer();
 				string key = current_button + GetPlayer();
+				int value = (int) e.keyCode;
 
-				if (buttons.ContainsKey(key))
-					buttons.Remove(key);
+				PlayerPrefs.SetInt(key, value);
 
-				buttons.Add(key, e.keyCode);
-
-				Debug.Log("Button " + current_button + " set to " + e.keyCode + " for player " + GetPlayer());
+				Debug.Log("Button " + current_button + " set to " + e.keyCode + " for player " + player);
 
 				// Reset current button
 				current_button = "";
@@ -38,6 +35,7 @@ public class ConfigureGameBehaviour : MonoBehaviour {
 	}
 
 	public void GoBack() {
+		PlayerPrefs.Save ();
 		Application.LoadLevel ("Start");
 	}
 
