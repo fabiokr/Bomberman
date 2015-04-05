@@ -12,7 +12,7 @@ public class ConfigureGameBehaviour : MonoBehaviour {
 
 	void OnGUI () {
 		Event e = Event.current;
-		if (e.isKey) {
+		if (e.isKey && e.keyCode != KeyCode.None) {
 
 			if (current_button.Length > 0) {
 				string player = GetPlayer();
