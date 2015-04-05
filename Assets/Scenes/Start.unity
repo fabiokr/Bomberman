@@ -305,7 +305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1108870175}
-        m_MethodName: StartGame
+        m_MethodName: ConfigureControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,4 +12,9 @@ public class StartGameBehavior : MonoBehaviour {
 		Debug.Log ("Starting Game");
 		Application.LoadLevel ("Arena"); 
 	}
+
+	public void ConfigureControls() {
+		Debug.Log ("Configure Controls");
+		Application.LoadLevel ("Configure"); 
+	}
 }
