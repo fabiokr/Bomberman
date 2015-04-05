@@ -39,9 +39,6 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	}
 
 	void Move() {
-		float moveHorizontal = 0.0f;
-		float moveVertical = 0.0f;
-		
 		Vector3 vLook = transform.eulerAngles;
 		bool move = false;
 		
