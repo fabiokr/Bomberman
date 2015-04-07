@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - DestructibleBlock
   - Stage
+  - Button
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
