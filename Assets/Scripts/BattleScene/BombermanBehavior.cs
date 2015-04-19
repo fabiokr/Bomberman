@@ -25,7 +25,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 	void Start() {
 		bombs = new List<GameObject> ();
 		stageGenerator = GameObject.FindGameObjectWithTag(Tags.Stage).GetComponent<StageGenerator>();
-		controls = new Controls (player_number);
+		controls = new Controls (transform.name);
 		animation ["Idle"].speed = 1.0f;
 		animation ["Walk"].speed = 3.0f;
 	}
