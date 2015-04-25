@@ -122,6 +122,9 @@ public class StageGenerator : MonoBehaviour {
 
 		GameObject b = null;
 
+		// Number of players stored in config
+		nPlayers = PlayerPrefs.GetInt ("Players");
+
 		foreach (Vector3 position in orderedPlayersPositions) {
 			if(players < nPlayers) {
 				b = Instantiate(player) as GameObject;

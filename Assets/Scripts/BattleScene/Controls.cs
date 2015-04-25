@@ -2,58 +2,35 @@
 using System.Collections;
 
 public class Controls {
-	public KeyCode Up = KeyCode.UpArrow;
-	public KeyCode Down = KeyCode.DownArrow;
-	public KeyCode Left = KeyCode.LeftArrow;
-	public KeyCode Right = KeyCode.RightArrow;
-	public KeyCode PlaceBomb = KeyCode.Space;
+	private string horizontal, vertical, bomb;
 
-	public Controls (int player) {
-		switch (player) {
-		case 1:
-			Up = KeyCode.UpArrow;
-			Down = KeyCode.DownArrow;
-			Left = KeyCode.LeftArrow;
-			Right = KeyCode.RightArrow;
-			PlaceBomb = KeyCode.Space;
-
-			break;
-		case 2:
-			Up = KeyCode.Keypad8;
-			Down = KeyCode.Keypad2;
-			Left = KeyCode.Keypad4;
-			Right = KeyCode.Keypad6;
-			PlaceBomb = KeyCode.Keypad0;
-
-			break;
-		case 3:
-			// TODO
-			break;
-		case 4:
-			// TODO
-			break;
-		default:
-			break;
-		}
+	public Controls (string name) {
+		horizontal = name + " Horizontal";
+		vertical = name + " Vertical";
+		bomb = name + " Bomb";
 	}
 
 	public bool getUp () {
-		return Input.GetKey (Up);
+		return Input.GetAxis (vertical) > 0.5 && isPredominant(vertical, horizontal);
 	}
 
 	public bool getDown () {
-		return Input.GetKey (Down);
+		return Input.GetAxis (vertical) < -0.5 && isPredominant(vertical, horizontal);
 	}
 
 	public bool getLeft () {
-		return Input.GetKey (Left);
+		return Input.GetAxis (horizontal) < -0.5 && isPredominant(horizontal, vertical);
 	}
 
 	public bool getRight () {
-		return Input.GetKey (Right);
+		return Input.GetAxis (horizontal) > 0.5 && isPredominant(horizontal, vertical);
 	}
 
 	public bool getPlaceBomb () {
-		return Input.GetKeyUp (PlaceBomb);
+		return Input.GetAxis (bomb) != 0;
+	}
+
+	private bool isPredominant(string axisA, string axisB) {
+		return Mathf.Abs(Input.GetAxis (axisA)) > Mathf.Abs(Input.GetAxis (axisB));
 	}
 }
