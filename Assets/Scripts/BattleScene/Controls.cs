@@ -27,7 +27,7 @@ public class Controls {
 	}
 
 	public bool getPlaceBomb () {
-		return Input.GetAxis (bomb) != 0;
+		return Input.GetButtonDown (bomb);
 	}
 
 	private bool isPredominant(string axisA, string axisB) {
