@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 423930}
   - 198: {fileID: 19823930}
   - 199: {fileID: 19923930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flare Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 423932}
   - 198: {fileID: 19823932}
   - 199: {fileID: 19923932}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Smoke Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 423934}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane Transform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - 4: {fileID: 423936}
   - 198: {fileID: 19823934}
   - 199: {fileID: 19923934}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sparks Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

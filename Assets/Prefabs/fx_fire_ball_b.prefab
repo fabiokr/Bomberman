@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 489694}
   - 198: {fileID: 19889694}
   - 199: {fileID: 19989694}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fx_fire_ball_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
