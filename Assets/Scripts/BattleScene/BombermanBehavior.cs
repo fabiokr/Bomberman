@@ -135,6 +135,7 @@ public class BombermanBehavior : MonoBehaviour, ExplodableInterface {
 
 	public void Die() {
 		transform.FindChild ("Bomberman").renderer.enabled = false;
+		gameObject.layer = Layers.IgnoreRaycast;
 		PlayDieSound ();
 		Destroy (gameObject, 3f);
 	}
