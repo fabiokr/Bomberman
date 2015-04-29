@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d542006a0f744564895b81a209c63e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTimer: 100000
+  startingTimer: 180
   gameStartDelay: 5
   gameInProgress: 0
   gameStarted: 0
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 30
