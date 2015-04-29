@@ -7,9 +7,9 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 
 	public float timer = 4.5f;
 	public float power = 1f;
-
-	public Detonator explosion_prefab;
-	public GameObject explosion_fire_prefab;
+	
+	public GameObject explosionEffect;
+	public AudioClip explosionSound;
 
 	static Vector3[] DIRS = {
 	  Vector3.forward,
@@ -37,7 +37,8 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 		gameObject.layer = Layers.IgnoreRaycast;
 
 		// Explosion effect
-		Instantiate (explosion_prefab, gameObject.transform.position, Quaternion.identity);
+		Instantiate (explosionEffect, ExplosionEffectPosition(gameObject.transform.position), Quaternion.identity);
+		bomberman.audio.PlayOneShot (explosionSound);
 
 		Ray ray;
 		RaycastHit hit;
@@ -58,7 +59,7 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 					ExplosionHit(hit);
 				} else {
 					// Explosion fire effect
-					GameObject fire = Instantiate (explosion_fire_prefab, transform.position + (dir * i), Quaternion.identity) as GameObject;
+					GameObject fire = Instantiate (explosionEffect, ExplosionEffectPosition(transform.position + (dir * i)), Quaternion.identity) as GameObject;
 					Destroy (fire, 3.0f); // Auto destroy after 3 seconds
 				}
 			}
@@ -79,5 +80,9 @@ public class BombBehavior : MonoBehaviour, ExplodableInterface {
 		if (explodable != null) {
 			explodable.Explode ();
 		}
+	}
+
+	Vector3 ExplosionEffectPosition(Vector3 position) {
+		return new Vector3 (position.x, 0.5f, position.z);
 	}
 }

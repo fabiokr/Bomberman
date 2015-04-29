@@ -501,11 +501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomberman: {fileID: 0}
-  countdown: 4
+  timer: 4.5
   power: 1
-  explosion_prefab: {fileID: 11459892, guid: 30939d82ee05dea45863fccaec909a22, type: 2}
-  explosion_fire_prefab: {fileID: 189694, guid: 4be3ed5ca5e3c77459c7272e5de9d000,
-    type: 2}
+  explosionEffect: {fileID: 189694, guid: 4be3ed5ca5e3c77459c7272e5de9d000, type: 2}
+  explosionSound: {fileID: 8300000, guid: 1792989a5a33779428d2dbe9a9430605, type: 3}
 --- !u!114 &11495710
 MonoBehaviour:
   m_ObjectHideFlags: 1

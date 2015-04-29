@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d542006a0f744564895b81a209c63e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTimer: 180
+  startingTimer: 100000
   gameStartDelay: 5
   gameInProgress: 0
   gameStarted: 0
