@@ -27,7 +27,8 @@ public class HurryBlockBehavior : MonoBehaviour {
 			audioSource.clip = blockClip;
 			audioSource.Play();
 
-			enabled = false;
+			gameObject.GetComponent<Collider> ().isTrigger = false;
+			Destroy(this);
 		}
 	}
 
